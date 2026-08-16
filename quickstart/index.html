@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ripple Quick Start | Pebble Marketing</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://pebblemarketing.ai/quickstart/">
+<meta name="description" content="How to connect Ripple and what to ask it. For anyone testing or demoing Ripple.">
+<link rel="icon" href="/assets/mark.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pebble Marketing">
+<meta property="og:url" content="https://pebblemarketing.ai/quickstart/">
+<meta property="og:title" content="Ripple Quick Start">
+<meta property="og:description" content="How to connect Ripple and what to ask it.">
+<meta property="og:image" content="https://pebblemarketing.ai/assets/mark.png">
+<meta name="twitter:card" content="summary">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+/* Tokens copied verbatim from design-system/tokens/*.css — no approximations. */
+:root {
+  --cyan-950:#083344; --cyan-900:#0d3f4f; --cyan-800:#155e75;
+  --teal-600:#0d9488; --teal-300:#5eead4; --teal-50:#f0fdfa;
+  --emerald-600:#059669;
+  --stone-50:#fafaf9; --stone-100:#f5f5f4; --stone-200:#e7e5e4;
+  --stone-500:#78716c; --stone-600:#57534e;
+  --white:#ffffff; --pebble-cream:#ece7d6;
+
+  --gradient-deep: linear-gradient(180deg,#14586c 0%,#0d3f4f 42%,#083344 100%);
+  --text-on-dark:var(--white); --text-on-dark-body:#c3d0d6;
+  --border-card:#edeae6; --border-subtle:var(--stone-200);
+  --border-on-dark:rgba(255,255,255,.12);
+  --shadow-card:0 1px 2px rgba(8,51,68,.04),0 2px 6px rgba(8,51,68,.05);
+  --shadow-sphere:0 8px 18px -6px rgba(0,0,0,.45);
+  --radius-lg:16px; --radius-xl:24px; --radius-2xl:32px;
+  --container-prose:720px;
+
+  --sans:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Lora",Georgia,serif;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0; background:var(--stone-50); color:var(--stone-600);
+  font-family:var(--serif); font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:var(--container-prose);margin:0 auto;padding:0 2rem}
+
+/* ---------- sections alternate light stone / deep ink ---------- */
+section{padding:3.25rem 0}
+.deep{
+  background:var(--gradient-deep); color:var(--text-on-dark-body);
+  position:relative; overflow:hidden;
+}
+.deep h2,.deep h3,.deep strong,.deep .job b{color:var(--text-on-dark)}
+.light + .light{padding-top:0}
+
+/* ripple line art — 1px hairlines, bleeding off-frame, corner-anchored */
+.ripple{position:absolute;pointer-events:none;opacity:.85}
+.ripple circle{fill:none;stroke:var(--teal-300);stroke-width:1}
+.ripple .sphere{fill:var(--pebble-cream);stroke:none;filter:drop-shadow(0 8px 18px rgba(0,0,0,.45))}
+.ripple .dot{fill:var(--emerald-600);stroke:none}
+.ripple-hero{top:-90px;right:-130px;width:420px;height:420px}
+.ripple-mid{bottom:-150px;left:-140px;width:380px;height:380px;opacity:.55}
+
+/* ---------- eyebrow: ALL-CAPS, tracked, short leading rule ---------- */
+.eyebrow{
+  font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal-600);
+  display:inline-flex;align-items:center;gap:.75rem;margin:0 0 .9rem;
+}
+.eyebrow::before{content:"";width:2rem;height:1px;background:currentColor;opacity:.9}
+.eyebrow.on-dark{color:var(--teal-300)}
+
+/* ---------- type ---------- */
+h1{
+  font-family:var(--sans);font-size:clamp(2.25rem,5.5vw,3.25rem);font-weight:700;
+  line-height:1.08;letter-spacing:-.02em;color:var(--text-on-dark);margin:0 0 1rem;
+}
+/* the signature: sans display with a serif-italic accent */
+h1 .accent{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--teal-300)}
+
+h2{
+  font-family:var(--sans);font-size:1.5rem;font-weight:700;letter-spacing:-.01em;
+  color:var(--cyan-900);margin:0 0 1.1rem;
+}
+h3{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--cyan-800);margin:2rem 0 .6rem}
+.deep h3{color:var(--teal-300)}
+
+p{margin:0 0 1rem}
+strong{color:var(--cyan-900);font-weight:600}
+.lead{font-size:1.0625rem;color:var(--text-on-dark-body);margin-bottom:.35rem}
+.note{font-size:.938rem}
+.muted{font-size:.875rem;color:var(--stone-500)}
+.deep .muted{color:rgba(255,255,255,.58)}
+
+.logo{height:22px;display:block;margin-bottom:2rem}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--white);border:1px solid var(--border-card);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);padding:1.15rem 1.35rem;margin:0 0 .85rem;
+}
+.card b{display:block;font-family:var(--sans);font-size:.938rem;font-weight:700;color:var(--cyan-900);margin-bottom:.15rem}
+.card p:last-child{margin-bottom:0}
+
+.deep .card{
+  background:rgba(255,255,255,.05);border-color:var(--border-on-dark);
+  box-shadow:none;color:var(--text-on-dark-body);
+}
+.deep .card b{color:var(--white)}
+
+/* ---------- prompts: the only teal-tinted element on light ---------- */
+.prompt{
+  font-family:var(--sans);font-size:.938rem;font-weight:500;color:var(--cyan-950);
+  background:var(--teal-50);border:1px solid #d6f2ee;border-left:3px solid var(--teal-600);
+  border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:.75rem 1rem;margin:0 0 .9rem;
+}
+
+/* ---------- numbered walkthrough ---------- */
+.step{
+  background:var(--white);border:1px solid var(--border-card);border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-card);padding:1.35rem 1.5rem;margin:0 0 1rem;
+}
+.step-head{
+  font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--cyan-900);
+  margin:0 0 .7rem;display:flex;align-items:baseline;gap:.65rem;
+}
+.num{
+  flex:0 0 auto;width:1.65rem;height:1.65rem;border-radius:999px;
+  background:var(--cyan-900);color:var(--white);
+  font-size:.813rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;
+  align-self:center;
+}
+.step p:last-child{margin-bottom:0}
+
+/* ---------- table ---------- */
+.tablecard{
+  background:var(--white);border:1px solid var(--border-card);border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-card);padding:.5rem 1.5rem 1rem;margin-bottom:1.25rem;
+}
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+th{
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stone-500);text-align:left;padding:.9rem .85rem .55rem 0;border-bottom:1px solid var(--border-subtle);
+}
+td{padding:.6rem .85rem .6rem 0;border-bottom:1px solid var(--stone-100);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--sans);font-weight:600;color:var(--cyan-900);padding-right:1.5rem}
+
+ol{margin:0 0 1.1rem;padding-left:1.15rem}
+li{margin-bottom:.4rem}
+
+code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.8125rem;
+  background:var(--stone-100);border:1px solid var(--border-subtle);border-radius:4px;
+  padding:.1rem .3rem;color:var(--cyan-900);word-break:break-all;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--cyan-950);color:rgba(255,255,255,.58);padding:1.75rem 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  font-family:var(--sans);font-size:.813rem}
+footer img{height:18px;opacity:.9}
+
+/* ---------- print ---------- */
+@media print{
+  body{font-size:10.5pt}
+  section{padding:1.4rem 0}
+  .wrap{max-width:none;padding:0}
+  .deep,.prompt,.num,footer{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h2,h3,.step-head{page-break-after:avoid}
+  .step,.card,.tablecard,.prompt,table{page-break-inside:avoid}
+  .ripple{opacity:.5}
+}
+
+@media (max-width:640px){
+  .wrap{padding:0 1.25rem}
+  section{padding:2.25rem 0}
+  td:first-child{padding-right:.9rem}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO — deep ink, ripple corner ============ -->
+<section class="deep">
+  <svg class="ripple ripple-hero" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="42"/><circle cx="200" cy="200" r="74" opacity=".8"/>
+    <circle cx="200" cy="200" r="110" opacity=".6"/><circle cx="200" cy="200" r="150" opacity=".42"/>
+    <circle cx="200" cy="200" r="194" opacity=".26"/><circle cx="200" cy="200" r="242" opacity=".14"/>
+    <circle class="sphere" cx="200" cy="200" r="17"/>
+  </svg>
+  <div class="wrap">
+    <img class="logo" src="/assets/logo-horizontal-light.png" alt="Pebble Marketing">
+    <p class="eyebrow on-dark">Quick start</p>
+    <h1>Ripple</h1>
+    <p class="lead">For anyone testing or demoing Ripple.</p>
+    <p class="lead">Connect it once, then talk to it in plain English. It answers from <span style="font-family:var(--serif);font-style:italic;color:var(--teal-300)">your brand</span> instead of guessing.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT IT DOES — light ============ -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow">What Ripple does</p>
+    <h2>Your brand foundation, somewhere your AI can read it</h2>
+
+    <div class="card"><b>It knows your brand.</b><p>Reads your brand rules, voice guide, and channel guides before it writes a word. Opens your positioning, market research, competitor landscape, and buyer personas. Pulls up the same playbooks Pebble uses to produce work in your voice.</p></div>
+    <div class="card"><b>It holds your proof.</b><p>Every claim about your business comes with a source and a date beside it. It also knows which claims are cleared to publish and which ones are for sales conversations only.</p></div>
+    <div class="card"><b>It remembers.</b><p>Decisions you've made, corrections you've given, preferences it picked up along the way. What's been published, what's still in flight, and what's waiting on you.</p></div>
+    <div class="card"><b>It asks your buyers.</b><p>Ripple carries simulated buyers built from your research. You can ask them a question and get each one's answer separately, put a draft in front of them for reactions, or hand them two versions and find out which one lands.</p></div>
+    <div class="card"><b>It reviews before anything goes out.</b><p>Every draft gets graded against your quality standards. Every number in it gets checked against your records. A draft that reaches for a figure nobody registered comes back marked, with the figure named.</p></div>
+  </div>
+</section>
+
+<!-- ============ STRATEGY — deep ink, the conceptual heart ============ -->
+<section class="deep">
+  <svg class="ripple ripple-mid" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="52"/><circle cx="200" cy="200" r="96" opacity=".7"/>
+    <circle cx="200" cy="200" r="145" opacity=".45"/><circle cx="200" cy="200" r="200" opacity=".25"/>
+    <circle cx="200" cy="200" r="262" opacity=".12"/>
+    <circle class="sphere" cx="200" cy="200" r="15"/>
+    <circle class="dot" cx="330" cy="112" r="4.5"/>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow on-dark">The strategy, end to end</p>
+    <h2>One connected chain</h2>
+    <p>Ripple holds your strategy as one connected chain, and every draft comes out of it in that order.</p>
+
+    <div class="card"><b>Your brand is the foundation.</b><p>Core messaging, what you claim and the proof behind each claim, how you sound, and the rules about what you'd never say.</p></div>
+    <div class="card"><b>Your go-to-market plan sits on top of it.</b><p>Who you're going after and how you qualify them, which channels do which job, what a buyer can buy at each stage, and how someone moves from a first symptom to a decision.</p></div>
+    <div class="card"><b>Your channels execute it.</b><p>Each one carries its own guide: what belongs there, what the format demands, and which part of the go-to-market plan it serves.</p></div>
+
+    <p>That order is why a draft can be on-voice and still be wrong. A post in your exact voice, aimed at the wrong buyer at the wrong stage, is off-strategy. Ripple reads down the whole chain before it writes, and you can walk it yourself with the first three prompts below.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED — light ============ -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow">What's included</p>
+    <h2>Built per engagement. This is the shape.</h2>
+
+    <div class="tablecard">
+      <table>
+        <thead><tr><th>Document</th><th>What it holds</th></tr></thead>
+        <tbody>
+          <tr><td>Brand guide</td><td>Core messaging, voice, counter-positioning, claims and their proof, standing rules</td></tr>
+          <tr><td>Voice profile</td><td>How the brand sounds, and the voices of your company spokespeople and leadership</td></tr>
+          <tr><td>Voice examples</td><td>Real published posts, the calibration for how you write</td></tr>
+          <tr><td>Channel guides</td><td>One per channel you run, with structure and requirements for each</td></tr>
+          <tr><td>Positioning</td><td>Your message pillars and the frame you compete in</td></tr>
+          <tr><td>Go-to-market plan</td><td>Your targets, channel roles, offer ladder, and the buyer's journey</td></tr>
+          <tr><td>Market research</td><td>The verified market picture behind the positioning</td></tr>
+          <tr><td>Competitor landscape</td><td>Who else is in the frame and how they talk</td></tr>
+          <tr><td>Ideal customer profile</td><td>Your ICP and buyer personas</td></tr>
+          <tr><td>Customer language</td><td>Your buyers' own words, pulled from real research</td></tr>
+          <tr><td>Design system</td><td>Color, type, and layout rules for anything visual</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>What you can ask it to do</h3>
+    <p>Nothing to memorize and no commands to type. Ask in plain English and Ripple reaches for what it needs.</p>
+    <p>Read your brand rules and open any document behind them. Pull up your voice examples. Recall past decisions, preferences, and open questions. Look up what's been published. Draft in your voice for any channel you run. Ask your buyers a question, or put a draft in front of them. Send a draft through quality review. Check a claim against your records. Save a piece as a “more like this” or “never again.” Flag something that reads off-brand. Send a question to the Pebble team.</p>
+  </div>
+</section>
+
+<!-- ============ SET UP — light ============ -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow">Set up</p>
+    <h2>Before you connect</h2>
+    <p>Ripple authenticates using a GitHub user name. Please send Pebble your user name, not your email, before accessing the system. You will not be able to access Ripple until you are registered.</p>
+    <p>Ripple is built to use with almost any AI tool that accepts a custom MCP. We have included instructions for setting up with Claude below. If you are using another tool and have questions about set up, please contact Pebble.</p>
+    <p class="note"><strong>Built for Sonnet 5 or similar.</strong> Higher models work. Ripple is tuned to be token-efficient.</p>
+
+    <h3>Connect in Claude</h3>
+    <ol>
+      <li>Open <strong>Settings → Connectors → Add custom connector</strong>.</li>
+      <li>Name it <strong>Ripple</strong>, paste in <code>https://ripple-mcp-server.fly.dev/mcp/</code>, click <strong>Add</strong>.</li>
+      <li>Click <strong>Connect</strong>, sign in with your GitHub account, then <strong>Authorize</strong>.</li>
+      <li>Open a chat, click the <strong>tools</strong> menu, and switch Ripple on.</li>
+    </ol>
+
+    <h3>Check it worked</h3>
+    <p class="prompt">Am I connected to Ripple?</p>
+    <p class="note">Then:</p>
+    <p class="prompt">What do you know about my brand?</p>
+    <p class="note">The first confirms the connection. The second confirms you landed on the right brand. If the answer to the second could describe any company, Ripple isn't switched on in that chat.</p>
+  </div>
+</section>
+
+<!-- ============ HOW TO USE — light ============ -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow">How to use Ripple</p>
+    <h2>Open every session the same way</h2>
+    <p class="prompt">Be the strategist.</p>
+    <p class="note">That tells Ripple to load your brand, your plan, and where the engagement stands before it does anything else. Everything after it runs on your material rather than on general knowledge.</p>
+
+    <h3>Then work through these</h3>
+    <p class="note">Six prompts, in order. Each shows a different part of the system, and each one tells you what a working answer looks like.</p>
+
+    <div class="step">
+      <p class="step-head"><span class="num">1</span>Start with what it knows</p>
+      <p class="prompt">What do you know about my brand, how we sound, and who our buyers are?</p>
+      <p class="note">You should get specifics you recognize. Names, positions, the way the brand talks. Not adjectives.</p>
+    </div>
+
+    <div class="step">
+      <p class="step-head"><span class="num">2</span>Ask about your proof</p>
+      <p class="prompt">What stats do we have as proof, and where does each one come from?</p>
+      <p class="note">You should get a list of claims with a source beside each one, and a date on the ones that need it. <strong>The second column is the part that matters.</strong> Generic AI hands you a confident number from nowhere. Ripple only reaches for proof someone registered.</p>
+      <p class="muted">What you're seeing is the publishable set. Some claims are cleared for sales conversations and stay behind, so this isn't everything on file.</p>
+    </div>
+
+    <div class="step">
+      <p class="step-head"><span class="num">3</span>Ask about the plan and the channels</p>
+      <p class="prompt">What's our go-to-market plan, and what job does each channel do in it?</p>
+      <p class="note">You should get your real targets, your channels, and what each one is for. Follow it up:</p>
+      <p class="prompt">What has to be in a LinkedIn post for us, and what would you never do there?</p>
+      <p class="note">Every channel carries its own guide. That's why a draft for one channel doesn't read like a draft for another.</p>
+    </div>
+
+    <div class="step">
+      <p class="step-head"><span class="num">4</span>Ask your buyers something</p>
+      <p class="prompt">Ask our buyers what they'd search for when they're looking for {EXAMPLE TOPIC}.</p>
+      <p class="note">Each buyer answers on their own, in their own words.</p>
+      <p class="muted">This is a question, not a review. It carries no verdict.</p>
+    </div>
+
+    <div class="step">
+      <p class="step-head"><span class="num">5</span>Write something</p>
+      <p class="prompt">Draft a LinkedIn post about {EXAMPLE TOPIC}. Tell me which channel guide and voice examples you used.</p>
+      <p class="note">Ask for the sources every time while you're testing. A draft that names the guide and the examples it worked from is drafting <em>from</em> your brand. A draft that can't is writing <em>about</em> it.</p>
+    </div>
+
+    <div class="step">
+      <p class="step-head"><span class="num">6</span>Send it to review</p>
+      <p class="prompt">I'm happy with this. Get it reviewed.</p>
+      <p class="note">This one holds the screen while the review runs. That's expected, not a hang.</p>
+      <p class="note">You'll get a verdict and written notes. Then Ripple asks whether you also want buyer reactions. That question is part of the process. Answer either way.</p>
+      <p class="note">A <strong>Revise</strong> verdict is the system doing its job. If the draft used a number that isn't in your records, the review names the number and won't pass it. The review is automated, it runs against your engagement's quality standards, and it can't be talked out of a verdict.</p>
+    </div>
+
+    <h3>Close every session</h3>
+    <p class="prompt">Let's close out. Log what we decided, and remember that we'd never say “{PHRASE}”.</p>
+    <p class="note">Corrections and decisions stick. Close this way and the next session starts further along than this one did. Close the tab without it and that context is gone.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT IT WON'T DO — light ============ -->
+<section class="light">
+  <div class="wrap">
+    <p class="eyebrow">Good to know</p>
+    <h2>What it won't do</h2>
+    <p>Ripple hands you drafts. It doesn't publish, it doesn't post to your social accounts, and it doesn't send your email. Putting something live is a step you or Pebble take.</p>
+    <p>It won't see another company's information, and no one else can see yours.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="/assets/logo-horizontal-light.png" alt="Pebble Marketing">
+    <span>Questions? Email your Pebble contact.</span>
+  </div>
+</footer>
+
+</body>
+</html>
