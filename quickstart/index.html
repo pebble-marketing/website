@@ -33,6 +33,7 @@
   --border-on-dark:rgba(255,255,255,.12);
   --shadow-card:0 1px 2px rgba(8,51,68,.04),0 2px 6px rgba(8,51,68,.05);
   --shadow-sphere:0 8px 18px -6px rgba(0,0,0,.45);
+  --focus-ring:0 0 0 3px rgba(45,212,191,.45);
   --radius-lg:16px; --radius-xl:24px; --radius-2xl:32px;
   --container-prose:720px;
 
@@ -167,8 +168,34 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
   font-family:var(--sans);font-size:.813rem}
 footer img{height:18px;opacity:.9}
 
+
+/* ---------- section menu: sticky, small, brand nav surface ---------- */
+.skipnav{
+  position:sticky;top:0;z-index:20;background:var(--cyan-800);
+  border-bottom:1px solid var(--border-on-dark);
+}
+.skipnav ul{
+  max-width:var(--container-prose);margin:0 auto;padding:0 2rem;
+  list-style:none;display:flex;gap:1.5rem;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.skipnav ul::-webkit-scrollbar{display:none}
+.skipnav li{margin:0}
+.skipnav a{
+  display:block;padding:.7rem 0;white-space:nowrap;
+  font-family:var(--sans);font-size:.813rem;font-weight:600;
+  color:var(--teal-300);text-decoration:none;transition:color .15s ease;
+}
+.skipnav a:hover{color:var(--white)}
+.skipnav a:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:4px}
+/* sticky bar must not sit over the heading it just jumped to */
+section{scroll-margin-top:3rem}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 /* ---------- print ---------- */
 @media print{
+  .skipnav{display:none}
   body{font-size:10.5pt}
   section{padding:1.4rem 0}
   .wrap{max-width:none;padding:0}
@@ -180,6 +207,7 @@ footer img{height:18px;opacity:.9}
 
 @media (max-width:640px){
   .wrap{padding:0 1.25rem}
+  .skipnav ul{padding:0 1.25rem;gap:1.15rem}
   section{padding:2.25rem 0}
   td:first-child{padding-right:.9rem}
   footer .wrap{flex-direction:column;align-items:flex-start;gap:.5rem}
@@ -189,7 +217,7 @@ footer img{height:18px;opacity:.9}
 <body>
 
 <!-- ============ HERO — deep ink, ripple corner ============ -->
-<section class="deep">
+<section id="top" class="deep">
   <svg class="ripple ripple-hero" viewBox="0 0 400 400" aria-hidden="true">
     <circle cx="200" cy="200" r="42"/><circle cx="200" cy="200" r="74" opacity=".8"/>
     <circle cx="200" cy="200" r="110" opacity=".6"/><circle cx="200" cy="200" r="150" opacity=".42"/>
@@ -205,8 +233,19 @@ footer img{height:18px;opacity:.9}
   </div>
 </section>
 
+<nav class="skipnav" aria-label="Page sections">
+  <ul>
+    <li><a href="#what">What it does</a></li>
+    <li><a href="#strategy">Strategy</a></li>
+    <li><a href="#included">What's included</a></li>
+    <li><a href="#setup">Set up</a></li>
+    <li><a href="#use">How to use it</a></li>
+    <li><a href="#wont">What it won't do</a></li>
+  </ul>
+</nav>
+
 <!-- ============ WHAT IT DOES — light ============ -->
-<section class="light">
+<section id="what" class="light">
   <div class="wrap">
     <p class="eyebrow">What Ripple does</p>
     <h2>Your brand foundation, somewhere your AI can read it</h2>
@@ -220,7 +259,7 @@ footer img{height:18px;opacity:.9}
 </section>
 
 <!-- ============ STRATEGY — deep ink, the conceptual heart ============ -->
-<section class="deep">
+<section id="strategy" class="deep">
   <svg class="ripple ripple-mid" viewBox="0 0 400 400" aria-hidden="true">
     <circle cx="200" cy="200" r="52"/><circle cx="200" cy="200" r="96" opacity=".7"/>
     <circle cx="200" cy="200" r="145" opacity=".45"/><circle cx="200" cy="200" r="200" opacity=".25"/>
@@ -242,7 +281,7 @@ footer img{height:18px;opacity:.9}
 </section>
 
 <!-- ============ WHAT'S INCLUDED — light ============ -->
-<section class="light">
+<section id="included" class="light">
   <div class="wrap">
     <p class="eyebrow">What's included</p>
     <h2>Built per engagement. This is the shape.</h2>
@@ -273,7 +312,7 @@ footer img{height:18px;opacity:.9}
 </section>
 
 <!-- ============ SET UP — light ============ -->
-<section class="light">
+<section id="setup" class="light">
   <div class="wrap">
     <p class="eyebrow">Set up</p>
     <h2>Before you connect</h2>
@@ -298,7 +337,7 @@ footer img{height:18px;opacity:.9}
 </section>
 
 <!-- ============ HOW TO USE — light ============ -->
-<section class="light">
+<section id="use" class="light">
   <div class="wrap">
     <p class="eyebrow">How to use Ripple</p>
     <h2>Open every session the same way</h2>
@@ -357,7 +396,7 @@ footer img{height:18px;opacity:.9}
 </section>
 
 <!-- ============ WHAT IT WON'T DO — light ============ -->
-<section class="light">
+<section id="wont" class="light">
   <div class="wrap">
     <p class="eyebrow">Good to know</p>
     <h2>What it won't do</h2>
